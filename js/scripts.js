@@ -1,33 +1,39 @@
-//business logic 
 $(document).ready(function() {
   $("form#celeb-dating").submit(function(event) {
+
+    const millionStr = $("select#million").val();
+    const million = parseInt(millionStr);
+    
+    const animalStr = $("select#animal").val();
+    const animal = parseInt(animalStr);
+    
+    const spareTimeStr = $("select#spare-time").val();
+    const spareTime = parseInt(spareTimeStr);
+
+    const result = million + animal + spareTime;
+    
+    if (result <= 4) {
+      $("#nick").show()
+      $("#bear").hide()
+      $("#ada").hide()
+      $("#jane").hide()
+    } else if (result > 4 && result <= 6) {
+      $("#nick").hide()
+      $("#ada").hide()
+      $("#jane").hide()
+      $("#bear").show()
+    } else if (result > 6 && result <= 8) {
+      $("#nick").hide()
+      $("#bear").hide()
+      $("#ada").hide()
+      $("#jane").show()
+    } else {
+      $("#ada").show()
+      $("#nick").hide()
+      $("#jane").hide()
+      $("#bear").hide() 
+      
+    };
     event.preventDefault();
-
-    // const animal ??
-    // const spare-time ??
-
-    const million = $("select#million").val(); 
-//user interface
-//let output = 'nick'
-
-    if (million === "holiday") {
-      $('#nick').fadeIn();
-    } else if (million === "wildlife") { 
-      $('#jane').fadeIn();
-    } else if (million === "trek") {
-      $('#bear').fadeIn();
-    } else if (million === "school") {
-      $('#ada').fadeIn ();
-    } 
-
-      //$(#bear).text(quote);
-      //$(#output).show();
-
-//want V it up top to occur 1st
-//    event.preventDefault();
-  }); 
+  });
 });
-
-//const dob = $("#born").val();
-// const favoriteColor = $("#color").val();
-// const flavor = $("input:radio[name=flavor]:checked").val();
